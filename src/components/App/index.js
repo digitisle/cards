@@ -7,10 +7,10 @@ import Cards from "../Cards";
 
 const App = ({ deck, getDeck }) => (
   <div className="tc flex flex-column items-center justify-center">
-    {deck ? (
+    {deck.loaded ? (
       <>
         <Tasks />
-        <Cards cards={deck.cards} />
+        <Cards />
       </>
     ) : (
       <>
@@ -40,10 +40,7 @@ const App = ({ deck, getDeck }) => (
 );
 
 const mapStateToProps = ({ deck }) => ({
-  deck
+  deck,
 });
 
-export default connect(
-  mapStateToProps,
-  { getDeck }
-)(App);
+export default connect(mapStateToProps, { getDeck })(App);

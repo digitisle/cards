@@ -8,7 +8,12 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export default function configureStore() {
   const store = createStore(
     reducer,
-    {},
+    {
+      deck: {
+        loaded: false,
+        cards: [],
+      },
+    },
     composeEnhancers(applyMiddleware(ReduxThunk))
   );
   return store;

@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const getLabel = card => {
+const getLabel = (card) => {
   var suite = "";
 
   if (card.suit === "HEARTS") {
@@ -16,12 +17,18 @@ const getLabel = card => {
   return `${card.value} of ${suite}`;
 };
 
-export default ({ cards }) => (
+const Cards = ({ cards }) => (
   <ul className="cards mw8-ns">
-    {cards.map(card => (
+    {cards.map((card) => (
       <li>
         <img src={card.image} alt={getLabel(card)} />
       </li>
     ))}
   </ul>
 );
+
+const mapStateToProps = ({ deck: { cards } }) => ({
+  cards,
+});
+
+export default connect(mapStateToProps)(Cards);

@@ -1,19 +1,15 @@
 import { ACTIONS } from "./action";
 
-const defaultState = {
-  deck: {
-    has_cards: false
-  }
-};
-
-const reducer = (state = defaultState, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.SET_CARDS: {
-      const { deck, cards } = action.payload;
+      const { cards, loaded } = action.payload;
       return {
         ...state,
-        deck,
-        cards
+        deck: {
+          loaded,
+          cards,
+        },
       };
     }
 

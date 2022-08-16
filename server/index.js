@@ -7,10 +7,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/api/*", (req, res) => {
   fetch(`https://deckofcardsapi.com${req.originalUrl}`, {
-    mode: "no-cors"
+    mode: "no-cors",
   })
-    .then(res => res.json())
-    .then(json => {
+    .then((res) => res.json())
+    .then((json) => {
       res.setHeader("Content-Type", "application/json");
       res.send(JSON.stringify(json));
     });

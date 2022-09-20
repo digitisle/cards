@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 const getLabel = (card) => {
   var suite = "";
@@ -17,18 +17,19 @@ const getLabel = (card) => {
   return `${card.value} of ${suite}`;
 };
 
-const Cards = ({ cards }) => (
-  <ul className="cards mw8-ns">
-    {cards.map((card) => (
-      <li>
-        <img src={card.image} alt={getLabel(card)} />
-      </li>
-    ))}
-  </ul>
-);
+const Cards = () => {
+  const {
+    deck: { cards },
+  } = useSelector((state) => state.deck);
+  return (
+    <ul className="cards mw8-ns">
+      {cards.map((card) => (
+        <li>
+          <img src={card.image} alt={getLabel(card)} />
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-const mapStateToProps = ({ deck: { cards } }) => ({
-  cards,
-});
-
-export default connect(mapStateToProps)(Cards);
+export default Cards;

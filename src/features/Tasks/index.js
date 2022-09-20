@@ -5,7 +5,7 @@ const Tasks = () => {
     <div className="flex justify-center items-start mw8">
       <div className="fl w-50 tl pa1">
         <div className="ba b--near-white pv1 ph2">
-          <h1>Task 1 - Add up black cards</h1>
+          <h1>Task 2 - Add up black cards</h1>
           <p>
             Clicking the "Sum Black Cards" button should trigger an alert, which
             shows the sum of the value of all of the cards:
@@ -20,7 +20,7 @@ const Tasks = () => {
       </div>
       <div className="fl w-50 tl pa1">
         <div className="ba b--near-white pv1 ph2">
-          <h1>Task 2 - Sort Cards</h1>
+          <h1>Task 3 - Sort Cards</h1>
           <p>
             Clicking the "Sort Cards" button should sort the deck into order, so
             they appear:

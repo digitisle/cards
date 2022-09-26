@@ -11,7 +11,7 @@ app.get("/api/*", (req, res) => {
   const deck = new Deck()
 
   const cards = deck.cards.map((card) => {
-    //add code for unique identifier
+    
     let code = card.rank + card.suit
 
     //replace rank: "T" with rank: "10"

@@ -4,24 +4,24 @@ import { connect } from "react-redux";
 const getLabel = (card) => {
   var suite = "";
 
-  if (card.suit === "HEARTS") {
+  if (card.suit === "H") {
     suite = "\u2665";
-  } else if (card.suit === "SPADES") {
+  } else if (card.suit === "S") {
     suite = "\u2660";
-  } else if (card.suit === "DIAMONDS") {
+  } else if (card.suit === "D") {
     suite = "\u2666";
-  } else if (card.suit === "CLUBS") {
+  } else if (card.suit === "C") {
     suite = "\u2663";
   }
 
-  return `${card.value} of ${suite}`;
+  return `${card.rank} of ${suite}`;
 };
 
 const Cards = ({ cards }) => (
   <ul className="cards mw8-ns">
     {cards.map((card) => (
       <li>
-        <img src={card.image} alt={getLabel(card)} />
+        <img src={`images/${card.rank + card.suit}.png`} alt={getLabel(card)} />
       </li>
     ))}
   </ul>

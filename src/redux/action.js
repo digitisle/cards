@@ -15,7 +15,7 @@ export function getDeck() {
 
     dispatch({
       type: ACTIONS.SET_CARDS,
-      payload: { cards: cards, loaded: true },
+      payload: { cards, loaded: true },
     });
   };
 }

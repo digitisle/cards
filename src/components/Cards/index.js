@@ -21,7 +21,7 @@ const Cards = ({ cards }) => (
   <ul className="cards mw8-ns">
     {cards.map((card) => (
       <li>
-        <img src={`images/${card.rank + card.suit}.png`} alt={getLabel(card)} />
+        <img src={`images/${card.code}.png`} alt={getLabel(card)} />
       </li>
     ))}
   </ul>

@@ -1,19 +1,33 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const fetch = require("node-fetch");
+const express = require("express")
+const bodyParser = require("body-parser")
+const fetch = require("node-fetch")
+const { Deck } = require("deckofcards")
 
-const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+const app = express()
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get("/api/*", (req, res) => {
-  fetch(`https://deckofcardsapi.com${req.originalUrl}`, {
-    mode: "no-cors",
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      res.setHeader("Content-Type", "application/json");
-      res.send(JSON.stringify(json));
-    });
+
+  const deck = new Deck()
+
+  const cards = deck.cards.map((card) => {
+
+    let code = card.rank + card.suit
+
+    //replace rank: "T" with rank: "10"
+    if (card.rank === 'T') {
+      return { code, ...card, rank: '10' }
+    } else {
+      return { code, ...card }
+    }
+  });
+
+  res.setHeader("Content-Type", "application/json")
+
+  //intentially delay response
+  setTimeout((() => {
+    res.send(JSON.stringify(cards))
+  }), 500)
 });
 
 app.listen(3001, () =>
